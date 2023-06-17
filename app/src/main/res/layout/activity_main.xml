@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#8BC34A"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/picture1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <Button
+                android:id="@+id/btn_take_photo"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:text="take photo" />
+
+            <Button
+                android:id="@+id/btn_select_algorithm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="selectAlgorithmClick"
+                android:text="选择算法" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/picture2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

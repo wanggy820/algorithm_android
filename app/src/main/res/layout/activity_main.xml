@@ -39,16 +39,27 @@
                 android:text="选择算法" />
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/picture2"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:background="#8BC34A"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/picture2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/avatars" />
+            <Button
+                android:id="@+id/select_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="selectPictureClick"
+                android:text="选中该图片" />
+        </RelativeLayout>
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

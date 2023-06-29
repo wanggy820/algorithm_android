@@ -21,15 +21,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
-    AlgorithmBean curentBean;
-    private Button mTakePhoto;
+    private AlgorithmBean curentBean;
+    private Button algorithmBtn;
+    private Button takePhoto;
     private ImageView picture1, picture2;
+
     Uri imageUri;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTakePhoto = (Button) findViewById(R.id.btn_take_photo);
+        takePhoto = (Button) findViewById(R.id.btn_take_photo);
+        algorithmBtn = (Button) findViewById(R.id.btn_select_algorithm);
         picture1 = (ImageView) findViewById(R.id.picture1);
         picture2 = (ImageView) findViewById(R.id.picture2);
 
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         ImageUtils.list.add(bean7);
 
         curentBean = bean1;
-        mTakePhoto.setOnClickListener(new View.OnClickListener() {
+        takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //创建file对象，用于存储拍照后的图片；
@@ -136,8 +140,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void opererImage(){
+        algorithmBtn.setText("选择算法--" + curentBean.getName());
         BitmapDrawable bd = (BitmapDrawable) picture1.getDrawable();
         if (bd == null || bd.getBitmap() == null) {
+            Toast.makeText(this, "请先拍照！", Toast.LENGTH_LONG).show();
             return;
         }
         LoadingDialog.getInstance(this).show();//显示
@@ -172,5 +178,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
 
+    }
+
+    public void selectPictureClick(View view) {
+        BitmapDrawable bd = (BitmapDrawable) picture2.getDrawable();
+        picture1.setImageBitmap(bd.getBitmap());
     }
 }
